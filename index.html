@@ -3,15 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Template</title>
+    <title>Form validator</title>
     <link rel="icon" type="image/png" href="favicon.png" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
-    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="container">
+      <h1>Sign up today!</h1>
+      <!-- Form -->
+      <form id="form">
+        <!-- Full name -->
+        <div class="form-group">
+          <label for="name">Full name</label>
+          <input type="text" id="name" placeholder="Full name" />
+        </div>
+        <!-- Phone number -->
+        <div class="form-group">
+          <label for="phone">Phone number</label>
+          <input type="tel" id="phone" placeholder="555-555-5555" />
+        </div>
+        <!-- Email address -->
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" placeholder="email@address.com" />
+        </div>
+        <!-- Website URL -->
+        <div class="form-group">
+          <label for="website">Website URL</label>
+          <input type="url" id="website" placeholder="https://mysite.com" />
+        </div>
+        <!-- Password -->
+        <div class="form-group">
+          <label for="password1">Password</label>
+          <input type="password" id="password1" placeholder="Create password" />
+        </div>
+        <!-- Confirm password -->
+        <div class="form-group">
+          <label for="password2">Confirm password</label>
+          <input
+            type="password"
+            id="password2"
+            placeholder="Confirm password"
+          />
+        </div>
+        <button type="submit">Register</button>
+      </form>
+      <!-- Error/success message -->
+      <div class="message-container">
+        <h3 class="message">Don't hesitate!</h3>
+      </div>
+    </div>
     <!-- Script -->
     <script src="script.js"></script>
   </body>
