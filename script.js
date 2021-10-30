@@ -4,38 +4,18 @@ const password2Elem = document.getElementById("password2");
 const messageContainer = document.querySelector(".message-container");
 const message = document.getElementById("message");
 
-let isValid = false;
+let isFormValid = false;
+let isPassword2Valid = false;
 let passwordsMatch = false;
 
-function validateForm() {
-  // Using constraint API
-  isValid = form.checkValidity();
-  // Style main message for an error
-  if (!isValid) {
-    message.textContent = "Please fill out all fields.";
-    message.style.color = "red";
-    messageContainer.style.borderColor = "red";
-    return;
-  }
-  // Check to see if passwords match
-  if (password1Elem.value === password2Elem.value) {
-    passwordsMatch = true;
-    password1Elem.style.borderColor = "lightgreen";
-    password2Elem.style.borderColor = "lightgreen";
+function validatePassword() {
+  // Validate password using constraint API
+  isPassword2Valid = password2Elem.checkValidity();
+  passwordsMatch = password1Elem.value === password2Elem.value;
+  if (isPassword2Valid && passwordsMatch) {
+    password2Elem.style.borderColor = "limegreen";
   } else {
-    passwordsMatch = false;
-    message.textContent = "Make sure passwords match.";
-    message.style.color = "red";
-    messageContainer.style.borderColor = "red";
-    password1Elem.style.borderColor = "red";
     password2Elem.style.borderColor = "red";
-    return;
-  }
-  // If form is valid and passwords match
-  if (isValid && passwordsMatch) {
-    message.textContent = "Successfully registered";
-    message.style.color = "lightgreen";
-    messageContainer.style.borderColor = "lightgreen";
   }
 }
 
@@ -52,13 +32,29 @@ function storeFormData() {
 
 function processFormData(e) {
   e.preventDefault();
-  // Validate form
-  validateForm();
-  // Submit data if valid
-  if (isValid && passwordsMatch) {
+  // Validate form using constraint API
+  isFormValid = form.checkValidity();
+  validatePassword();
+  if (isFormValid && passwordsMatch) {
+    // Data is valid so submit
+    message.textContent = "Successfully registered";
+    message.style.color = "limegreen";
+    messageContainer.style.borderColor = "limegreen";
     storeFormData();
+  } else if (isFormValid && !passwordsMatch) {
+    // Indicate that passwords don't match
+    message.textContent = "Make sure passwords match";
+    message.style.color = "red";
+    messageContainer.style.borderColor = "red";
+  } else {
+    // Indicte that data other than password is incorrectly entered
+    message.textContent = "Please fill out all fields correctly.";
+    message.style.color = "red";
+    messageContainer.style.borderColor = "red";
   }
 }
 
 // Event listener
 form.addEventListener("submit", processFormData);
+password1Elem.addEventListener("input", validatePassword);
+password2Elem.addEventListener("input", validatePassword);
