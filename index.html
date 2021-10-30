@@ -22,6 +22,7 @@
             required
             minlength="3"
             maxlength="100"
+            name="name"
           />
         </div>
         <!-- Phone number -->
@@ -33,6 +34,7 @@
             placeholder="+55 555 555555"
             required
             pattern="\+[1-9]{1}[0-9]{0,2}[ -]?[1-9]{1}[0-9]{0,3}[ -]?[0-9]{5,10}"
+            name="phone"
           />
         </div>
         <!-- Email address -->
@@ -43,6 +45,7 @@
             id="email"
             placeholder="email@address.com"
             required
+            name="email"
           />
         </div>
         <!-- Website URL -->
@@ -53,6 +56,7 @@
             id="website"
             placeholder="https://mysite.com"
             required
+            name="website"
           />
         </div>
         <!-- Password -->
@@ -76,13 +80,14 @@
             placeholder="Confirm password"
             required
             pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
+            name="password"
           />
         </div>
         <button type="submit">Register</button>
       </form>
       <!-- Error/success message -->
       <div class="message-container">
-        <h3 class="message">Don't hesitate!</h3>
+        <h3 id="message">Don't hesitate!</h3>
       </div>
     </div>
     <!-- Script -->
