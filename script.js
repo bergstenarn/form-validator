@@ -3,6 +3,9 @@ const password1Elem = document.getElementById("password1");
 const password2Elem = document.getElementById("password2");
 const messageContainer = document.querySelector(".message-container");
 const message = document.getElementById("message");
+const signupAnotherBtn = document.getElementById("signup-another-btn");
+const gotoSigninBtn = document.getElementById("goto-signin-btn");
+const header = document.querySelector("h1");
 
 let isFormValid = false;
 let isPassword2Valid = false;
@@ -41,6 +44,10 @@ function processFormData(e) {
     message.style.color = "limegreen";
     messageContainer.style.borderColor = "limegreen";
     storeFormData();
+    form.setAttribute("hidden", true);
+    signupAnotherBtn.removeAttribute("hidden");
+    gotoSigninBtn.removeAttribute("hidden");
+    header.textContent = "Congratulations!";
   } else if (isFormValid && !passwordsMatch) {
     // Indicate that passwords don't match
     message.textContent = "Make sure passwords match";
