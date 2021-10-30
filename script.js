@@ -61,6 +61,18 @@ function processFormData(e) {
   }
 }
 
+function returnToSignup() {
+  header.textContent = "Sign up today!";
+  signupAnotherBtn.setAttribute("hidden", true);
+  gotoSigninBtn.setAttribute("hidden", true);
+  form.reset();
+  validatePassword();
+  message.textContent = "Don't hesitate!";
+  message.style.color = "black";
+  messageContainer.style.borderColor = "black";
+  form.removeAttribute("hidden");
+}
+
 // Event listener
 form.addEventListener("submit", processFormData);
 password1Elem.addEventListener("input", validatePassword);
